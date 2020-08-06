@@ -11,7 +11,7 @@ phases:
       - aws cloudformation package --template-file template_mvn.yml --s3-bucket url-shorten-lambda-code-build --output-template-file outputtemplate.yml
 artifacts:
     files:
-      - target/url-shortener-in-aws-1.1-SNAPSHOT.jar
+      - target/url-shortener-in-aws-lambda-1.0-SNAPSHOT-shaded.jar
       - template_mvn.yml
       - outputtemplate.yml
     discard-paths: yes
