@@ -15,7 +15,6 @@ import java.nio.charset.Charset;
 
 public class LambdaFunctionUrlShortner implements RequestStreamHandler {
 
-
     @Override
     public void handleRequest(InputStream inputStream, OutputStream outputStream, Context context) throws IOException {
         String input = IOUtils.toString(inputStream, "UTF-8");

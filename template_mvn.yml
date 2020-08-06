@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: An AWS Lambda application which provides url-shortening function.
+Resources:
+  function:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: target/url-shortener-in-aws-lambda-1.0-SNAPSHOT
+      Handler: bonsonzheng.url.shortener.LambdaFunctionUrlShortner::handleRequest
+      Runtime: java8
+      Description: Java function
+      MemorySize: 512
+      Timeout: 10
+      # Function's execution role
+      Policies:
+        - AmazonS3FullAccess
+        - AmazonDynamoDBFullAccess
+        - AWSLambdaBasicExecutionRole-5ec88dd5-6cac-4eab-bd7d-b76d4e6d61e6
+      Tracing: Active

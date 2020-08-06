@@ -1,0 +1,28 @@
+version: 0.2
+
+phases:
+     install:
+        runtime-versions:
+          java: openjdk8
+      build:
+        commands:
+          - echo Build started on `date`
+          - mvn test
+          - aws cloudformation package --template-file template_mvn.yaml --s3-bucket url-shorten-lambda-code-build --output-template-file outputtemplate.yaml
+        finally:
+          - echo THE PATH WORK IS !!!
+          - pwd
+          - echo The list of file is !!
+          - ls
+          - echo CODE BUILD SRC DIRECTORY
+          - echo $CODEBUILD_SRC_DIR
+      post_build:
+        commands:
+          - echo Build completed on `date`
+          - mvn package
+    artifacts:
+      files:
+        - target/url-shortener-in-aws-1.1-SNAPSHOT.jar
+        - template_mvn.yaml
+        - outputtemplate.yaml
+      discard-paths: yes
