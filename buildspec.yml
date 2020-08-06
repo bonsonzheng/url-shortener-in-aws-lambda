@@ -7,8 +7,8 @@ phases:
   build:
     commands:
       - java -version
-      - aws cloudformation package --template-file template_mvn.yaml --s3-bucket url-shorten-lambda-code-build --output-template-file outputtemplate.yaml
       - mvn package
+      - aws cloudformation package --template-file template_mvn.yml --s3-bucket url-shorten-lambda-code-build --output-template-file outputtemplate.yml
 artifacts:
     files:
       - target/url-shortener-in-aws-1.1-SNAPSHOT.jar
