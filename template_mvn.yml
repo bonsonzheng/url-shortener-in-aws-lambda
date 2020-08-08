@@ -5,6 +5,7 @@ Resources:
   function:
     Type: AWS::Serverless::Function
     Properties:
+      FunctionName: url-shorten
       CodeUri: target/url-shortener-in-aws-lambda-1.0-SNAPSHOT.jar
       Handler: bonsonzheng.url.shortener.LambdaFunctionUrlShortner::handleRequest
       Runtime: java8
@@ -13,7 +14,7 @@ Resources:
       Timeout: 10
       # Function's execution role
       Policies:
-        - AmazonS3FullAccess
-        - AmazonDynamoDBFullAccess
-        - AWSLambdaBasicExecutionRole-5ec88dd5-6cac-4eab-bd7d-b76d4e6d61e6
+        - AWSLambdaBasicExecutionRole
+        - AWSLambdaReadOnlyAccess
+        - AWSLambdaVPCAccessExecutionRole
       Tracing: Active

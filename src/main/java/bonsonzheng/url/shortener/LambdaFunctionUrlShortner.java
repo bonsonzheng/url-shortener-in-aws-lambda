@@ -32,8 +32,15 @@ public class LambdaFunctionUrlShortner implements RequestStreamHandler {
 
     private void handleGet(OutputStream outputStream, UrlShortenReq req) throws IOException {
         String originalUrl = UrlShortenService.getInstance().getUrl(req.getShortUrl());
+        JSONObject response;
 
-        JSONObject response = new JSONObject().put("statusCode", 301).put("headers", new JSONObject().put("Location", originalUrl));
+        if(originalUrl==null){
+            response = new JSONObject().put("statusCode", 404);
+
+        }else{
+            response = new JSONObject().put("statusCode", 301).put("headers", new JSONObject().put("Location", originalUrl));
+        }
+
         outputStream.write(response.toString().getBytes(Charset.forName("UTF-8")));
     }
 
