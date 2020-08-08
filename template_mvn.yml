@@ -17,4 +17,5 @@ Resources:
         - AWSLambdaBasicExecutionRole
         - AWSLambdaReadOnlyAccess
         - AWSLambdaVPCAccessExecutionRole
+        - AmazonDynamoDBFullAccess
       Tracing: Active
