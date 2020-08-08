@@ -48,8 +48,8 @@ public class LambdaFunctionUrlShortner implements RequestStreamHandler {
         String longUrl = req.getPayload().getLongUrl();
 
         try {
-            String shortenUrl = UrlShortenService.getInstance().shortenUrl(longUrl);
-
+            //String shortenUrl = UrlShortenService.getInstance().shortenUrl(longUrl);
+            String shortenUrl = "Skew up for testing";
             JSONObject response = new JSONObject().put("longUrl", longUrl).put("shortUrl", shortenUrl);
             outputStream.write(response.toString().getBytes(Charset.forName("UTF-8")));
 
