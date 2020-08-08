@@ -35,7 +35,7 @@ public class LambdaFunctionUrlShortner implements RequestStreamHandler {
         JSONObject response;
 
         if(originalUrl==null){
-            response = new JSONObject().put("statusCode", 404).put("errorMessage", "Resource not found");
+            response = new JSONObject().put("statusCode", 404).put("errorMessage", "Resource not found").put("stackTrace","404 NOT FOUND");
 
         }else{
             response = new JSONObject().put("statusCode", 301).put("headers", new JSONObject().put("Location", originalUrl));
